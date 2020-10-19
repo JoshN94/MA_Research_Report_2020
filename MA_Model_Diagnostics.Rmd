@@ -1,0 +1,180 @@
+---
+title: "MA Model Diagnostics"
+output: html_notebook
+---
+
+# Creative Models
+
+```{r creative pt1}
+
+par(mfrow=c(2, 2))
+plot(creative.1, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r creative pt2}
+par(mfrow=c(2, 2))
+plot(creative.2, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r creative pt3}
+
+par(mfrow=c(2, 2))
+plot(creative.3, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r creative pt4}
+par(mfrow=c(2, 2))
+plot(creative.4, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r creative pt5}
+
+par(mfrow=c(2, 2))
+plot(creative.5, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r creative pt6}
+
+par(mfrow=c(2, 2))
+plot(creative.6, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+# Focus Models
+
+```{r focus pt1}
+par(mfrow=c(2, 2))
+plot(focused.1, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r focus pt2}
+
+par(mfrow=c(2, 2))
+plot(focused.2, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r focus pt3}
+par(mfrow=c(2, 2))
+plot(focused.3, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r focus pt4}
+par(mfrow=c(2, 2))
+plot(focused.4, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r focus pt5}
+par(mfrow=c(2, 2))
+plot(focused.5, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r focus pt6}
+par(mfrow=c(2, 2))
+plot(focused.6, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+# Energetic Models
+
+```{r energetci pt1}
+
+par(mfrow=c(2, 2))
+plot(energetic.1, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+```{r energetic pt2}
+par(mfrow=c(2, 2))
+plot(energetic.2, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r energetic pt3}
+par(mfrow=c(2, 2))
+plot(energetic.3, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r energetic pt4}
+
+par(mfrow=c(2, 2))
+plot(energetic.4, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+```{r energetic pt5}
+par(mfrow=c(2, 2))
+plot(energetic.5, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r energetic pt6}
+par(mfrow=c(2, 2))
+plot(energetic.6, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+# Sleep Models
+
+```{r sleep pt1}
+par(mfrow=c(2, 2))
+plot(sleep.1, caption=NA, cex=0.5, cex.id=0.5)
+```
+```{r sleep pt2}
+
+par(mfrow=c(2, 2))
+plot(sleep.2, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+```{r sleep pt3}
+
+par(mfrow=c(2, 2))
+plot(sleep.3, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r sleep pt4}
+
+par(mfrow=c(2, 2))
+plot(sleep.4, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r sleep pt5}
+par(mfrow=c(2, 2))
+plot(sleep.5, caption=NA, cex=0.5, cex.id=0.5)
+```
+```{r sleep pt6}
+par(mfrow=c(2, 2))
+plot(sleep.6, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+# Mood Improvement Models
+
+```{r mood pt1}
+par(mfrow=c(2, 2))
+plot(mood.1, caption=NA, cex=0.5, cex.id=0.5)
+
+```
+
+```{r mood pt2}
+par(mfrow=c(2, 2))
+plot(mood.2, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r mood pt3}
+par(mfrow=c(2, 2))
+plot(mood.3, caption=NA, cex=0.5, cex.id=0.5)
+```
+```{r mood pt4}
+par(mfrow=c(2, 2))
+plot(mood.4, caption=NA, cex=0.5, cex.id=0.5)
+```
+
+```{r mood pt5}
+par(mfrow=c(2, 2))
+plot(mood.5, caption=NA, cex=0.5, cex.id=0.5)
+```
+```{r mood pt6}
+par(mfrow=c(2, 2))
+plot(mood.6, caption=NA, cex=0.5, cex.id=0.5)
+```
+

@@ -1,0 +1,281 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r load packages}
+
+library(tidyverse)
+library(ggplot2)
+library(rstatix)
+library(ggpubr)
+
+```
+
+
+```{r load data}
+cannabis <- read.csv("new_data_c.csv", sep = ",") # load the csv file containing the strains with all information available
+
+summary(cannabis)
+
+```
+
+```{r data reformatting pt 1}
+cannabis$H2O... <- as.numeric(cannabis$H2O...) # convert percentage of H20 from character to a number
+
+summary(cannabis)
+
+```
+
+```{r data reformatting pt 2}
+
+cannabis$Class <- cannabis$Type # create additional column for strain type.
+
+cannabis$Type[cannabis$Class == "indica"]    <- 1 # recode type of strain as numeric factor
+cannabis$Type[cannabis$Class == "sativa"]    <- 2
+cannabis$Type[cannabis$Class == "hybrid"]   <-  3
+
+summary(cannabis$class)
+```
+```{r eda pt1}
+
+h20 <- cannabis$H2O...
+hist(h20, main = "Histogram of H20 content as Percentage per Strain", xlab = "Percentage", ylab = "Frequency", col = "darkmagenta")
+
+```
+```{r eda pt2}
+
+total_thc <- cannabis$TotalTHC
+hist(total_thc, main = "Histogram of Total Levels of THC", xlab = "Amount(mg/g)", col = "darkmagenta")
+
+
+```
+```{r eda pt3}
+
+thc <- cannabis$THC
+hist(thc, main = "Histogram of THC", xlab = "Amount(mg/g)", col = "darkmagenta")
+
+```
+```{r eda pt4}
+
+thca <- cannabis$THCA
+hist(thca, main = "Histogram of THCA", xlab = "Amount(mg/g)", col = "darkmagenta")
+
+```
+```{r eda pt5}
+delta8_thc <- cannabis$Δ8.THC #no values except 0
+
+```
+
+```{r eda pt6}
+delta9_thc <- cannabis$Δ9.THC
+hist(delta9_thc, main = "Histogram of Δ9.THC", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt7}
+thcv <- cannabis$THCV #no values except 0
+hist(thcv)
+```
+
+```{r eda pt8}
+total_cbd <- cannabis$TotalCBD
+hist(total_cbd, main = "Histogram of CBD", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt9}
+cbda <- cannabis$CBDA
+hist(cbda, main = "Histogram of CBDA", xlab = "Amount(mg/g)", col = "darkmagenta")
+
+```
+
+
+```{r eda pt10}
+
+cbdva <- cannabis$CBDVA
+hist(cbdva, main = "Histogram of CBDVA", xlab = "Amount(mg/g)", col = "darkmagenta")
+
+```
+```{r eda pt 11}
+cbc <- cannabis$CBC
+hist(cbc, main = "Histogram of CBC", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt12}
+cbg <- cannabis$CBG
+hist(cbg, main = "Histogram of CBG", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+
+```{r eda pt13}
+cbn <- cannabis$CBN #no values
+hist(cbn)
+
+```
+
+```{r eda pt14}
+alpha_pinene <- cannabis$α.Pinene
+hist(alpha_pinene, main = "Histogram of α.Pinene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt15}
+camphene <- cannabis$Camphene #no values
+hist(camphene)
+
+```
+
+```{r eda pt 16}
+myrcene <- cannabis$Myrcene
+hist(myrcene, main = "Histogram of Myrcene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt17}
+
+beta_pinene <- cannabis$β.Pinene
+hist(beta_pinene, main = "Histogram of β.Pinene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt18}
+x3_carene <- cannabis$X3.Carene # no values
+hist(x3_carene) 
+```
+
+```{r eda pt19}
+alpha_terpinene <- cannabis$α.Terpinene # no values
+hist(alpha_terpinene)
+```
+
+```{r eda pt20}
+d_limonene <- cannabis$D.Limonene
+hist(d_limonene, main = "Historgram of D.Limonene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+
+```{r eda pt21}
+
+terpinolene <- cannabis$Terpinolene
+hist(terpinolene, main = "Histogram of Terpinolene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt22}
+
+linalool <- cannabis$Linalool
+hist(linalool, main = "Histogram of Linalool", xlab = "Amount(mg/g)", col = "darkmagenta")
+
+```
+```{r eda pt23}
+beta_carophyllene <- cannabis$β.Caryophyllene
+hist(beta_carophyllene, main = "Histogram of β.Caryophyllene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt24}
+alpha_humelene <- cannabis$α.Humelene
+hist(alpha_humelene, main = "Histogram of α.Humelene", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt25}
+neolidol_1 <- cannabis$Nerolidol.1
+hist(neolidol_1, main = "Histogram of Nerolidol.1", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt26}
+neolidol_2 <- cannabis$Nerolidol.2
+hist(neolidol_2, main = "Histogram of Nerolidol.2", xlab = "AMount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt27}
+guaiol <- cannabis$Guaiol
+hist(guaiol, main = "histogram of Guaiol", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt28}
+alpha_bisabolol <- cannabis$α.Bisabolol
+hist(alpha_bisabolol, main = "Histogram of α.Bisabolol", xlab = "Amount(mg/g)", col = "darkmagenta")
+```
+```{r eda pt29}
+
+library(ggplot2)
+ggplot(cannabis, aes(x = Class, y = THC, fill = Class)) +
+geom_boxplot(colour = "black", alpha = 0.7) +
+scale_x_discrete(name = "Class") +
+scale_y_continuous(name = "Amount of THC in mg/g", breaks = seq(0, 400, 25), limits=c(0, 400)) +
+ggtitle("Boxplot of Amount of THC by Strain Class") +
+theme_bw()
+
+
+```
+```{r eda pt30}
+library(ggplot2)
+ggplot(cannabis, aes(x = Class, y = TotalCBD, fill = Class)) +
+geom_boxplot(colour = "black", alpha = 0.7) +
+scale_x_discrete(name = "Class") +
+scale_y_continuous(name = "Amount of CBD in mg/g", breaks = seq(0, 200, 25), limits=c(0, 200)) +
+ggtitle("Boxplot of Amount of CBD by Strain Class") +
+theme_bw()
+
+
+```
+
+```{r eda pt31}
+THCA <- cannabis$THCA
+Δ9.THC <- cannabis$Δ9.THC
+CBDA <- cannabis$CBDA
+CBDVA <- cannabis$CBDVA
+CBG <-  cannabis$CBG
+CBC <- cannabis$CBC
+Name <- cannabis$Strain
+Class <- cannabis$Class
+
+minor_cannabinoids <- data.frame(Name, Class, Δ9.THC, CBDA, CBDVA, CBG, CBC)
+
+
+
+terpenes <- data.frame(cannabis$Strain, cannabis$Type, cannabis$Class, cannabis$Terpinolene, cannabis$Nerolidol.1, cannabis$Nerolidol.2, cannabis$Myrcene, cannabis$Linalool, cannabis$Guaiol, cannabis$D.Limonene, cannabis$β.Pinene, cannabis$β.Caryophyllene, cannabis$α.Bisabolol, cannabis$α.Pinene, cannabis$α.Humelene)
+
+
+```
+
+```{r eda pt32}
+
+library(ggplot2)
+library(reshape)
+
+melt_minor <- melt(minor_cannabinoids, id.vars = c("Name", "Class"))
+
+ggplot(data = melt_minor, aes(x=variable, y=value)) + geom_boxplot(aes(fill=Type))
+
+ggplot(melt_minor, aes(x = variable, y = value, fill = Class)) +
+geom_boxplot(colour = "black", alpha = 0.7) +
+scale_x_discrete(name = "Class") +
+scale_y_continuous(name = "Amount in mg/g", breaks = seq(0, 9, 0.5), limits=c(0, 9)) +
+ggtitle("Boxplot of Amount of Minor Cannabinoids by Strain Class") +
+theme_bw()
+
+
+```
+```{r eda pt33}
+library(ggplot2)
+ggplot(cannabis, aes(x = Class, y = THCA, fill = Class)) +
+geom_boxplot(colour = "black", alpha = 0.7) +
+scale_x_discrete(name = "Class") +
+scale_y_continuous(name = "Amount of THCA in mg/g", breaks = seq(0, 400, 25), limits=c(0, 400)) +
+ggtitle("Boxplot of Amount of THCA by Strain Class") +
+theme_bw()
+
+
+```
+```{r eda pt34}
+Terpinolene <- cannabis$Terpinolene
+Nerolidol.1 <- cannabis$Nerolidol.1
+Nerolidol.2 <- cannabis$Nerolidol.2
+Myrcene <- cannabis$Myrcene
+Linalool <- cannabis$Linalool
+Guaiol <- cannabis$Guaiol
+D.Limonene <-  cannabis$D.Limonene
+β.Pinene <-  cannabis$β.Pinene
+β.Caryophyllene <-  cannabis$β.Caryophyllene
+α.Bisabolol <-  cannabis$α.Bisabolol
+α.Pinene <-  cannabis$α.Pinene
+α.Humelene <- cannabis$α.Humelene
+
+terpenes <- data.frame(Name, Class, Terpinolene, Nerolidol.1, Nerolidol.2, Myrcene, Linalool, Guaiol, D.Limonene, β.Pinene, β.Caryophyllene, α.Bisabolol, α.Pinene, α.Humelene)
+
+
+melt_terpenes <- melt(terpenes, id.vars = c("Name", "Class"))
+
+p <- ggplot(melt_terpenes, aes(x = variable, y = value, fill = Class)) +
+geom_boxplot(colour = "black", alpha = 0.7, horizontal = TRUE) +
+scale_x_discrete(name = "Class") +
+scale_y_continuous(name = "Amount in mg/g", breaks = seq(0, 10, 1), limits=c(0, 10)) +
+ggtitle("Boxplot of Amount of Terpenes by Strain Class") +
+theme_bw()
+
+p + facet_wrap( ~ variable, scales="free")
+
+```
+
